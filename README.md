@@ -14,7 +14,7 @@ Explor.photos is my personal playground of sorts for playing with various new fr
 
 For this version of the project I have chosen to use a Microsoft SQL database. In the resources folder is a SQL file that can be used to create the initial database on a Microsoft SQL instance of your choice.
 
-I've chosen to use [Amazon Web Services RDS](https://aws.amazon.com/rds/).
+I've chosen to use [Amazon Web Services RDS](https://aws.amazon.com/rds/) to host my SQL instance but you can use any Microsoft SQL compatible platform you wish.
 
 ## Author
 
