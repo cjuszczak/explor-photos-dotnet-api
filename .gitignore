@@ -333,3 +333,4 @@ ASALocalRun/
 
 # Vim Swap Files
 .swp
+.DS_Store
