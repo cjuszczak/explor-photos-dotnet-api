@@ -23,11 +23,11 @@ USE explorphotos;
 GO
 
 CREATE TABLE photos 
-   (photoID int PRIMARY KEY NOT NULL,  
+   (photoID int PRIMARY KEY IDENTITY NOT NULL,  
    lat nvarchar(15) NOT NULL,
    lng nvarchar(15) NOT NULL,
    fileName nvarchar(50) NOT NULL,
-   camera nvarchar(15),
-   lens nvarchar(15),
+   camera nvarchar(25),
+   lens nvarchar(25),
    uploaded DATETIME)  
 GO  
