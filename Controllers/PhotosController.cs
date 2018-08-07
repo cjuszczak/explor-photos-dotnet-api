@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using explorphotosdotnetapi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace explorphotosdotnetapi.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [ApiController]
     public class PhotosController : Controller
     {
         private readonly ExplorContext _context;
@@ -20,37 +22,52 @@ namespace explorphotosdotnetapi.Controllers
 
         // GET: api/photos
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<Photo> Get()
         {
-            return new string[] { "value1", "value2" };
+            var photos = _context.Photos;
+
+            return Ok(_context.Photos);
         }
 
         // GET api/photos/5
         [HttpGet("{id}")]
-        public string Get([FromRoute] int id)
+        public async Task<ActionResult<Photo>> Get(int id)
         {
-            return "value";
+            var photo = await _context.Photos.SingleOrDefaultAsync(p => p.photoId == id);
+
+            return Ok(photo);
         }
 
         // POST api/photos
         [HttpPost]
-        public IActionResult Post([FromBody] Object obj)
+        public async Task<ActionResult<Photo>> Post(Photo photo)
         {
-            return Ok();
+            _context.Photos.Add(photo);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetPhoto", new { id = photo.photoId }, photo);
         }
 
         // PUT api/photos/5
         [HttpPut("{id}")]
-        public IActionResult Put([FromRoute] int id, [FromBody] Object obj)
+        public async Task<ActionResult<Photo>> Put(int id, Photo photo)
         {
-            return Ok();
+            _context.Entry(photo).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return Ok(photo);
         }
 
         // DELETE api/photos/5
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<ActionResult<Photo>> Delete(int id)
         {
-            return Ok();
+            var photo = await _context.Photos.SingleOrDefaultAsync(p => p.photoId == id);
+
+            _context.Photos.Remove(photo);
+            await _context.SaveChangesAsync();
+
+            return Ok(photo);
         }
     }
 }

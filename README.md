@@ -7,7 +7,7 @@ Explor.photos is my personal playground of sorts for playing with various new fr
 
 ## Prerequisites
 
-* [ASP.NET Core](https://www.asp.net/core/overview/aspnet-vnext)
+* [ASP.NET Core 2.1](https://www.asp.net/core/overview/aspnet-vnext)
 * [Microsoft SQL](https://www.microsoft.com/en-us/sql-server/)
 
 ## Database

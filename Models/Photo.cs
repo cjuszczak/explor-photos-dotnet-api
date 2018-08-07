@@ -10,6 +10,6 @@ namespace explorphotosdotnetapi.Models
         public string fileName { get; set; }
         public string camera { get; set; }
         public string lens { get; set; }
-        public DateTime uploaded { get; set; }
+        public DateTime? uploaded { get; set; }
     }
 }
